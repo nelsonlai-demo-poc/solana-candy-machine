@@ -11,6 +11,7 @@ import {
 } from '@solana/wallet-adapter-wallets';
 import { clusterApiUrl } from '@solana/web3.js';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { CandyMachineProvider } from '../contexts/candy-machine';
 
 import {
   ConnectionProvider,
@@ -38,7 +39,9 @@ function MyApp({ Component, pageProps }: AppProps) {
     <ConnectionProvider endpoint={endpoint}>
       <WalletProvider wallets={wallets} autoConnect>
         <WalletDialogProvider>
-          <Component {...pageProps} />
+          <CandyMachineProvider>
+            <Component {...pageProps} />
+          </CandyMachineProvider>
         </WalletDialogProvider>
       </WalletProvider>
     </ConnectionProvider>
